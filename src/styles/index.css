@@ -1,29 +1,72 @@
 @import 'tailwindcss';
 @import './tokens.css';
 
+/**
+ * ผูก design token เข้ากับ Tailwind
+ * ใช้ class ผ่านชื่อ semantic เช่น bg-brand-700, text-flame-600 เท่านั้น
+ */
 @theme {
-  --color-brand-50: var(--brand-50);
-  --color-brand-100: var(--brand-100);
-  --color-brand-500: var(--brand-500);
-  --color-brand-600: var(--brand-600);
+  --color-brand-950: var(--brand-950);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
   --color-brand-700: var(--brand-700);
+  --color-brand-600: var(--brand-600);
+  --color-brand-500: var(--brand-500);
+  --color-brand-400: var(--brand-400);
+  --color-brand-300: var(--brand-300);
+  --color-brand-200: var(--brand-200);
+  --color-brand-100: var(--brand-100);
+  --color-brand-50: var(--brand-50);
+
+  --color-flame-700: var(--flame-700);
+  --color-flame-600: var(--flame-600);
+  --color-flame-500: var(--flame-500);
+  --color-flame-400: var(--flame-400);
+  --color-flame-200: var(--flame-200);
+  --color-flame-100: var(--flame-100);
+
+  --color-pop-400: var(--pop-400);
+  --color-pop-700: var(--pop-700);
 
   --color-paper: var(--paper);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-inverse: var(--surface-inverse);
+
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-ink-3: var(--ink-3);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-ink-inverse-2: var(--ink-inverse-2);
+
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-inverse: var(--line-inverse);
 
   --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
   --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
   --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
 
-  --font-sans: 'IBM Plex Sans Thai', system-ui, -apple-system, sans-serif;
+  /**
+   * ตัวพิมพ์
+   * คู่มือแบรนด์กำหนด primary = FC Orbit (TH) / Ruddy (EN) ซึ่งเป็นฟอนต์ลิขสิทธิ์
+   * ยังไม่มี webfont license จึงใช้ชั้น "GOOGLE FONT" ที่คู่มือระบุไว้เองแทน
+   * คือ Montserrat (EN) + IBM Plex Sans Thai (TH)
+   * ถ้าซื้อ license FC Orbit สำหรับเว็บเมื่อไหร่ ให้ self-host แล้วเติมหน้าสแตกนี้
+   */
+  --font-display:
+    'FC Orbit', 'Montserrat', 'IBM Plex Sans Thai', system-ui, -apple-system, sans-serif;
+  --font-sans: 'IBM Plex Sans Thai', 'Sarabun', system-ui, -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --radius-card: var(--radius-md);
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 }
 
 @layer base {
@@ -36,23 +79,21 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
-    line-height: 1.7;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    /* กัน bounce scroll ตอนเปิดใน LIFF */
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: none; /* กัน bounce scroll ตอนเปิดใน LIFF */
   }
 
-  /* LIFF เปิดเต็มจอ ต้องเผื่อ safe area ของ iPhone */
-  .pb-safe {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-
-  .pt-safe {
-    padding-top: max(0px, env(safe-area-inset-top));
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
   :focus-visible {
-    outline: 2px solid var(--brand-500);
+    outline: 2px solid var(--flame-500);
     outline-offset: 2px;
   }
 
@@ -63,5 +104,46 @@
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
     }
+  }
+}
+
+@layer utilities {
+  /* LIFF เปิดเต็มจอ ต้องเผื่อ safe area ของ iPhone */
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /**
+   * ลายพื้นหลังของแบรนด์ — โลโก้ตัว O หูหมู โปรยบนพื้นน้ำตาล
+   * ถอดแบบมาจากหน้าลาย pattern ในเมนูเล่มจริง
+   */
+  .bg-brand-pattern {
+    background-color: var(--brand-700);
+    /* ชั้นบนเป็นสีน้ำตาลโปร่ง 90% กดลายให้เหลือความเข้มราว 10% — เป็นพื้นผิว ไม่ใช่ลวดลายเด่น */
+    background-image:
+      linear-gradient(0deg, rgb(114 40 21 / 90%), rgb(114 40 21 / 90%)),
+      url('/brand/okamoo-mark-cream.png');
+    background-repeat: no-repeat, repeat;
+    background-size:
+      cover,
+      74px 74px;
+  }
+
+  /* ไล่เฉดอุ่นสำหรับการ์ดเมนูที่ยังไม่มีรูปถ่ายจริง */
+  .bg-sizzle {
+    background-image: linear-gradient(
+      140deg,
+      var(--flame-400) 0%,
+      var(--brand-600) 62%,
+      var(--brand-800) 100%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
