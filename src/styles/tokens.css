@@ -1,0 +1,37 @@
+/**
+ * Design tokens — S0.2
+ *
+ * ทุกค่าประกาศเป็น CSS variable บน :root เพื่อให้ EP-9 (multi-tenant)
+ * override ต่อร้านตอน runtime ได้ โดยไม่ต้อง build ใหม่
+ */
+:root {
+  /* brand — ค่า default ก่อนที่ร้านจะ override */
+  --brand-50: #eef6f1;
+  --brand-100: #dceae2;
+  --brand-500: #1c6a51;
+  --brand-600: #175843;
+  --brand-700: #114234;
+
+  /* surface / ink */
+  --paper: #f6f7f5;
+  --surface: #ffffff;
+  --surface-2: #eef0ec;
+  --ink: #16241d;
+  --ink-2: #4c5c53;
+  --ink-3: #7a8a80;
+  --line: #dfe4dc;
+
+  /* semantic */
+  --success: #1c6a51;
+  --warning: #96591a;
+  --danger: #b3261e;
+
+  /* radius / elevation */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 2px rgb(22 36 29 / 6%), 0 8px 24px -18px rgb(22 36 29 / 30%);
+
+  /* touch target ขั้นต่ำตาม a11y (S8.2) */
+  --tap-min: 44px;
+}
