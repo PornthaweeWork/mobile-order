@@ -2,12 +2,15 @@
 
 เว็บแอปสั่งอาหาร/เครื่องดื่มสำหรับใช้งานในแอป LINE (LIFF) สร้างด้วย React + TypeScript + Tailwind CSS
 
-**🔗 Preview:** https://mobile-order-rho.vercel.app
+**🔗 Production:** https://okamoo.vercel.app (deploy อัตโนมัติจาก `main`)
+ทุก PR จะได้ preview URL ของตัวเองจาก Vercel อัตโนมัติ
 
 ## สถานะ
 
 กำลังทำ **EP-0 · Project Setup & Foundation** — โครงโปรเจกต์พร้อมใช้แล้ว ยังไม่เริ่ม UI จริง
 หน้าแรกตอนนี้เป็น _Foundation check_ ไว้ยืนยันว่า build, styling, routing และ mock API ทำงานครบ
+
+🎨 [Design System `docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md) — สี ตัวพิมพ์ โลโก้ และกติกาการใช้
 
 📋 [แผนงานฉบับเต็ม `docs/PLAN.md`](docs/PLAN.md) — ขอบเขต, tech stack, หน้าจอทั้งหมด,
 data model, Epic/Story สำหรับ Jira, sprint plan และคำถามที่ต้องตัดสินใจก่อนเริ่ม
