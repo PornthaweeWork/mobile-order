@@ -20,3 +20,6 @@ export const formatPrice = (satang: number): string => formatter.format(toBaht(s
 
 /** ปัดเป็นจำนวนเต็มสตางค์เสมอ ใช้ตอนคิด VAT / service charge */
 export const applyRate = (satang: number, rate: number): number => Math.round(satang * rate)
+
+/** 0.07 -> "7%" · 0.075 -> "7.5%" — กัน float error จากการคูณ 100 ตรง ๆ */
+export const formatRate = (rate: number): string => `${Math.round(rate * 1000) / 10}%`

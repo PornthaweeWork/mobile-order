@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/api'
 import { env } from '@/lib/env'
-import { formatPrice } from '@/lib/money'
+import { formatPrice, formatRate } from '@/lib/money'
 import type { MenuItemTag } from '@/types/domain'
 
 const TAG_LABEL: Record<MenuItemTag, string> = {
@@ -58,8 +58,8 @@ export function FoundationCheckPage() {
                 <div>
                   <h3 className="font-semibold">{storeQuery.data.name}</h3>
                   <p className="text-sm text-ink-3">
-                    VAT {storeQuery.data.vatRate * 100}% · Service charge{' '}
-                    {storeQuery.data.serviceChargeRate * 100}%
+                    VAT {formatRate(storeQuery.data.vatRate)} · Service charge{' '}
+                    {formatRate(storeQuery.data.serviceChargeRate)}
                   </p>
                 </div>
                 <span className="shrink-0 rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">

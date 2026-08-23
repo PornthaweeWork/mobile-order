@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { applyRate, baht, formatPrice, toBaht } from '../money'
+import { applyRate, baht, formatPrice, formatRate, toBaht } from '../money'
 
 describe('money', () => {
   it('แปลงบาทเป็นสตางค์แบบไม่มีเศษลอย', () => {
@@ -19,5 +19,12 @@ describe('money', () => {
 
   it('format เป็นสกุลเงินบาท', () => {
     expect(formatPrice(6500)).toContain('65')
+  })
+
+  it('format อัตราส่วนโดยไม่ติดเศษลอย', () => {
+    // 0.07 * 100 = 7.000000000000001 ถ้าคูณตรง ๆ
+    expect(formatRate(0.07)).toBe('7%')
+    expect(formatRate(0.1)).toBe('10%')
+    expect(formatRate(0.075)).toBe('7.5%')
   })
 })
