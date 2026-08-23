@@ -7,8 +7,9 @@
 
 ## สถานะ
 
-กำลังทำ **EP-0 · Project Setup & Foundation** — โครงโปรเจกต์พร้อมใช้แล้ว ยังไม่เริ่ม UI จริง
-หน้าแรกตอนนี้เป็น _Foundation check_ ไว้ยืนยันว่า build, styling, routing และ mock API ทำงานครบ
+**EP-0 · Project Setup & Foundation** เสร็จแล้ว และ CI ของแบรนด์โอกะหมูลงระบบแล้ว
+หน้าแรกตอนนี้เป็นหน้า _Design System_ แสดงสี ตัวพิมพ์ คอมโพเนนต์ และการ์ดเมนูตามแบรนด์
+ส่วน flow สั่งอาหารจริงจะมาใน EP-3/EP-4
 
 🎨 [Design System `docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md) — สี ตัวพิมพ์ โลโก้ และกติกาการใช้
 
