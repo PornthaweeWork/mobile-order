@@ -1,0 +1,7 @@
+dist
+coverage
+node_modules
+package-lock.json
+
+# prettier นับความกว้างอักขระไทยในตารางไม่ตรง จัดแล้วอ่านยากกว่าเดิม
+*.md

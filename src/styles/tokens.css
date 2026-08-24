@@ -1,0 +1,95 @@
+/**
+ * Okamoo · Design Tokens
+ *
+ * ที่มา: Okamoo BRANDBOOK / BRAND COLOR.pdf (Google Drive → Okamoo/COLOR)
+ * ทุกค่าเป็น CSS variable เพื่อให้ override ต่อสาขา/ต่อแคมเปญตอน runtime ได้
+ * โดยไม่ต้อง build ใหม่ (EP-9 multi-tenant)
+ *
+ * กติกา: ห้าม hardcode ค่าสีในคอมโพเนนต์ ให้อ้างผ่าน token เท่านั้น
+ */
+
+:root {
+  /* ── สีแบรนด์ตามคู่มือ (อย่าแก้ค่าเหล่านี้) ─────────────────── */
+  --okamoo-grilled-pork-brown: #722815; /* PANTONE 1685 C · primary */
+  --okamoo-amber-flame: #ff825c; /* PANTONE 170 C · head secondary */
+  --okamoo-piglet-cream: #e8bd84; /* PANTONE 3596 C */
+  --okamoo-freshy-orange: #e24305; /* PANTONE Orange 021 C */
+  --okamoo-yellow-pop: #f9ef7a; /* PANTONE 106 C */
+  --okamoo-dark-brown: #844526; /* PANTONE 1395 C */
+  --okamoo-charcoal-black: #473e37; /* PANTONE 7553 C */
+
+  /* ── Brand ramp · น้ำตาลหมูย่าง ใช้กับ chrome ของแอป ──────────
+     header, bottom nav, พื้นหลังเข้ม, ปุ่มรอง                      */
+  --brand-950: #2c0e05;
+  --brand-900: #3f1409;
+  --brand-800: #571e10;
+  --brand-700: #722815; /* = Grilled Pork Brown */
+  --brand-600: #844526; /* = Dark Brown */
+  --brand-500: #a75c2b; /* rust ที่ใช้ในลาย pattern ของแบรนด์ */
+  --brand-400: #c98a5b;
+  --brand-300: #e8bd84; /* = Piglet Cream */
+  --brand-200: #f2d8b4;
+  --brand-100: #f9e9d5;
+  --brand-50: #fdf6ec;
+
+  /* ── Flame ramp · ส้มไฟ ใช้กับ "ของร้อน" ที่ต้องการให้กด ────────
+     ปุ่มหลัก, ราคา, ป้ายลดราคา, badge จำนวนในตะกร้า               */
+  --flame-700: #9e2c03;
+  --flame-600: #c23a04; /* พื้นปุ่มหลัก + ตัวอักษรบนพื้นสว่าง
+                           Freshy Orange แท้ ๆ ให้ contrast กับตัวอักษรขาวแค่ 4.17:1
+                           ไม่ผ่าน WCAG AA จึงเข้มขึ้นหนึ่งสเต็ปเมื่อมีตัวหนังสือทับ */
+  --flame-500: #e24305; /* = Freshy Orange (ค่าตามคู่มือ) · ใช้กับพื้นที่ไม่มีตัวอักษรทับ */
+  --flame-400: #ff825c; /* = Amber Flame */
+  --flame-200: #ffc9b6;
+  --flame-100: #ffe6dc;
+
+  /* ── Pop · เหลืองสด ใช้น้อยมาก เฉพาะป้ายที่ต้องสะดุดตาจริง ───── */
+  --pop-400: #f9ef7a; /* = Yellow Pop */
+  --pop-700: #6f6108; /* คู่สีสำหรับตัวอักษรบนพื้น pop-400 */
+
+  /* ── พื้นผิว ───────────────────────────────────────────────── */
+  --paper: #fdf7ef; /* พื้นหลังแอป — ครีมอุ่นที่ถอดมาจาก Piglet Cream */
+  --surface: #ffffff; /* การ์ด */
+  --surface-2: #f7ebdc; /* พื้นรอง เช่น chip, skeleton */
+  --surface-inverse: #4a1a0e; /* การ์ดบนพื้นเข้ม */
+
+  /* ── ตัวอักษร ─────────────────────────────────────────────── */
+  --ink: #473e37; /* = Charcoal Black */
+  --ink-2: #6b5d54;
+  --ink-3: #7d6e63;
+  --ink-inverse: #fdf3e6;
+  --ink-inverse-2: #e3c9ae;
+
+  /* ── เส้น ─────────────────────────────────────────────────── */
+  --line: #eedfcb;
+  --line-strong: #dcc6aa;
+  --line-inverse: #6a3520;
+
+  /* ── สีสถานะ ──────────────────────────────────────────────────
+     ไม่ได้อยู่ในพาเลตแบรนด์ แต่จำเป็นต้องมีเพื่อสื่อสถานะออเดอร์
+     เลือกโทนอุ่นให้กลมกลืนกับแบรนด์ ห้ามใช้แทนสี CTA             */
+  --success: #24684a;
+  --success-bg: #e6f2ea;
+  --warning: #8a5606;
+  --warning-bg: #fdf0d9;
+  --danger: #c0261b;
+  --danger-bg: #fdeae8;
+
+  /* ── รัศมีมุม ─────────────────────────────────────────────────
+     โลโก้โอกะหมูเป็นเส้นโค้งปลายมน ทั้งระบบจึงใช้มุมมนค่อนข้างเยอะ */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ── เงา ─────────────────────────────────────────────────────
+     เงาอมน้ำตาลให้เข้ากับพื้นครีม ไม่ใช้เงาเทากลาง               */
+  --shadow-card: 0 1px 2px rgb(71 62 55 / 6%), 0 10px 24px -18px rgb(71 62 55 / 45%);
+  --shadow-raised: 0 2px 6px rgb(71 62 55 / 8%), 0 18px 36px -22px rgb(71 62 55 / 55%);
+  --shadow-cta: 0 8px 20px -10px rgb(226 67 5 / 65%);
+
+  /* ── อื่น ๆ ───────────────────────────────────────────────── */
+  --tap-min: 44px; /* touch target ขั้นต่ำตาม WCAG (S8.2) */
+}
