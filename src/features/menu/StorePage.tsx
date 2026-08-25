@@ -105,8 +105,8 @@ export function StorePage() {
         <CategoryTabs categories={categories} activeId={activeId} onSelect={jumpTo} />
       )}
 
-      <main className="mx-auto max-w-2xl px-5 py-4">
-        <div className="mb-4">
+      <main className="container-page py-4 md:py-6">
+        <div className="mb-4 md:mb-6 md:max-w-sm">
           <SearchInput value={query} onChange={setQuery} placeholder="ค้นหาเมนู" />
         </div>
 
@@ -127,8 +127,10 @@ export function StorePage() {
           <div className="flex flex-col gap-7">
             {itemsByCategory.map(({ category, items }) => (
               <section key={category.id} id={category.id} className="scroll-mt-16">
-                <h2 className="mb-2.5 font-display text-lg font-bold">{category.name}</h2>
-                <ul className="flex flex-col gap-3">
+                <h2 className="mb-2.5 font-display text-lg font-bold md:text-xl">
+                  {category.name}
+                </h2>
+                <ul className="grid gap-3 md:grid-cols-2">
                   {items.map((item) => (
                     <MenuCard key={item.id} item={item} query={debouncedQuery} />
                   ))}
@@ -157,9 +159,9 @@ function StoreSkeleton() {
   return (
     <div className="min-h-dvh animate-pulse bg-paper">
       <div className="h-44 bg-brand-700" />
-      <div className="mx-auto max-w-2xl px-5 py-5">
+      <div className="container-page py-5">
         <div className="h-11 rounded-[var(--radius-pill)] bg-surface-2" />
-        <div className="mt-5 flex flex-col gap-3">
+        <div className="mt-5 grid gap-3 md:grid-cols-2">
           <div className="h-28 rounded-[var(--radius-md)] bg-surface-2" />
           <div className="h-28 rounded-[var(--radius-md)] bg-surface-2" />
         </div>
@@ -170,7 +172,7 @@ function StoreSkeleton() {
 
 function MenuSkeleton() {
   return (
-    <div className="flex animate-pulse flex-col gap-3">
+    <div className="grid animate-pulse gap-3 md:grid-cols-2">
       <div className="h-28 rounded-[var(--radius-md)] bg-surface-2" />
       <div className="h-28 rounded-[var(--radius-md)] bg-surface-2" />
       <div className="h-28 rounded-[var(--radius-md)] bg-surface-2" />

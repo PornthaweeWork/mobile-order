@@ -29,16 +29,16 @@ function Highlighted({ text, query }: { text: string; query: string }) {
 
 export function MenuCard({ item, query = '' }: { item: MenuItem; query?: string }) {
   return (
-    <li className="flex gap-3.5 rounded-[var(--radius-md)] border border-line bg-surface p-3 shadow-[var(--shadow-card)]">
-      <div className="bg-sizzle relative grid size-[88px] shrink-0 place-items-center overflow-hidden rounded-[var(--radius-sm)]">
+    <li className="flex gap-3.5 rounded-[var(--radius-md)] border border-line bg-surface p-3 shadow-[var(--shadow-card)] md:gap-4 md:p-3.5">
+      <div className="bg-sizzle relative grid size-[88px] shrink-0 place-items-center overflow-hidden rounded-[var(--radius-sm)] md:size-28">
         {item.imageUrl ? (
           <img
             src={item.imageUrl}
             alt=""
             loading="lazy"
             decoding="async"
-            width={88}
-            height={88}
+            width={112}
+            height={112}
             className="size-full object-cover"
           />
         ) : (
@@ -53,7 +53,7 @@ export function MenuCard({ item, query = '' }: { item: MenuItem; query?: string 
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <h3 className="font-display text-base leading-tight font-bold">
+        <h3 className="font-display text-base leading-tight font-bold md:text-[1.05rem]">
           <Highlighted text={item.name} query={query} />
         </h3>
 

@@ -65,7 +65,7 @@ export function DesignSystemPage() {
     <div className="min-h-dvh bg-paper pb-32">
       {/* ── Hero ────────────────────────────────────────────── */}
       <header className="bg-brand-pattern pt-safe relative overflow-hidden">
-        <div className="relative px-5 pt-7 pb-9">
+        <div className="container-page relative pt-7 pb-9 md:pt-10 md:pb-12">
           <div className="flex items-center gap-3">
             <BrandMark size={46} />
             <div>
@@ -78,7 +78,7 @@ export function DesignSystemPage() {
             </div>
           </div>
 
-          <h1 className="mt-6 max-w-[16ch] font-display text-[2rem] leading-[1.15] font-extrabold text-ink-inverse">
+          <h1 className="mt-6 max-w-[16ch] font-display text-[2rem] leading-[1.15] font-extrabold text-ink-inverse md:text-[2.75rem]">
             หมูกระทะพรีเมียม<span className="text-flame-400"> สั่งจบในไลน์</span>
           </h1>
           <p className="mt-2 max-w-[30ch] text-sm text-ink-inverse-2">
@@ -97,7 +97,7 @@ export function DesignSystemPage() {
         </div>
       </header>
 
-      <main className="mx-auto flex max-w-2xl flex-col gap-9 px-5 py-7">
+      <main className="container-page flex flex-col gap-9 py-7 md:gap-12 md:py-10">
         {/* ── CI ลงงานจริง: การ์ดเมนู ───────────────────────── */}
         <section>
           <SectionHead
@@ -106,7 +106,7 @@ export function DesignSystemPage() {
             note="พื้นผิวที่ลูกค้าเห็นบ่อยที่สุด — ชื่อเมนูมาจากเมนูจริงของร้าน ราคายังเป็นตัวเลขสมมติ"
           />
 
-          <div className="-mx-5 mb-4 flex gap-2 overflow-x-auto px-5 pb-1">
+          <div className="-mx-5 mb-4 flex gap-2 overflow-x-auto px-5 pb-1 md:-mx-8 md:px-8">
             {categories.map((cat) => (
               <Chip key={cat.id} active={cat.id === activeCat} onClick={() => setActiveCat(cat.id)}>
                 {cat.name}
@@ -122,7 +122,7 @@ export function DesignSystemPage() {
           ) : menuQuery.isError ? (
             <ErrorCard message="โหลดเมนูไม่สำเร็จ ลองใหม่อีกครั้ง" />
           ) : (
-            <ul className="flex flex-col gap-3">
+            <ul className="grid gap-3 md:grid-cols-2">
               {featured.map((item) => (
                 <MenuCard key={item.id} item={item} />
               ))}
@@ -142,7 +142,7 @@ export function DesignSystemPage() {
               <div key={group.group}>
                 <p className="font-display text-sm font-bold">{group.group}</p>
                 <p className="mb-2.5 text-xs text-ink-3">{group.note}</p>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
                   {group.items.map((sw) => (
                     <div
                       key={sw.token}
@@ -168,7 +168,7 @@ export function DesignSystemPage() {
             title="ตัวพิมพ์"
             note="คู่มือกำหนด FC Orbit / Ruddy เป็น primary แต่ยังไม่มี webfont license จึงใช้ชั้น Google Font ที่คู่มือระบุไว้เอง"
           />
-          <div className="flex flex-col gap-2.5">
+          <div className="grid gap-2.5 md:grid-cols-2">
             <TypeRow role="Display · Montserrat + IBM Plex Sans Thai" note="หัวข้อ ชื่อเมนู ราคา">
               <p className="font-display text-2xl font-extrabold">ชุดสามหมูพรีเมียม</p>
             </TypeRow>
@@ -216,7 +216,7 @@ export function DesignSystemPage() {
         {/* ── สถานะระบบ ──────────────────────────────────────── */}
         <section>
           <SectionHead eyebrow="Build" title="สถานะระบบ" note="ค่าที่โหลดเข้ามาจริงตอน runtime" />
-          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-sm)] border border-line bg-line">
+          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-sm)] border border-line bg-line md:grid-cols-4">
             <Fact label="Mock API (MSW)" value={env.useMock ? 'เปิดอยู่' : 'ปิด'} />
             <Fact
               label="VAT / Service charge"
@@ -234,7 +234,7 @@ export function DesignSystemPage() {
 
       {/* ── Sticky cart bar ─────────────────────────────────── */}
       <div className="pb-safe fixed inset-x-0 bottom-0 border-t border-line bg-surface/95 px-5 pt-3 backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center gap-3">
+        <div className="container-page flex items-center gap-3 !px-0">
           <div className="min-w-0 flex-1">
             <p className="text-xs text-ink-3">3 รายการในตะกร้า</p>
             <p className="font-display text-lg font-bold tabular-nums">฿1,247</p>
@@ -254,7 +254,7 @@ function MenuCard({ item }: { item: MenuItem }) {
   return (
     <li className="flex gap-3.5 rounded-[var(--radius-md)] border border-line bg-surface p-3 shadow-[var(--shadow-card)]">
       {/* ยังไม่มีรูปถ่ายจริง ใช้ไล่เฉดอุ่น + มาร์คแบรนด์แทนไปก่อน */}
-      <div className="bg-sizzle relative grid size-[88px] shrink-0 place-items-center overflow-hidden rounded-[var(--radius-sm)]">
+      <div className="bg-sizzle relative grid size-[88px] shrink-0 place-items-center overflow-hidden rounded-[var(--radius-sm)] md:size-28">
         <BrandMark size={44} className="opacity-25" />
         {item.isSoldOut && (
           <div className="absolute inset-0 grid place-items-center bg-brand-950/65">
@@ -333,7 +333,7 @@ function Fact({ label, value }: { label: string; value: string }) {
 function SkeletonCard() {
   return (
     <div className="flex animate-pulse gap-3.5 rounded-[var(--radius-md)] border border-line bg-surface p-3">
-      <div className="size-[88px] shrink-0 rounded-[var(--radius-sm)] bg-surface-2" />
+      <div className="size-[88px] shrink-0 rounded-[var(--radius-sm)] bg-surface-2 md:size-28" />
       <div className="flex-1 pt-1">
         <div className="h-4 w-1/2 rounded bg-surface-2" />
         <div className="mt-2 h-3 w-3/4 rounded bg-surface-2" />

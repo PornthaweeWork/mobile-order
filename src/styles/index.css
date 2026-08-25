@@ -108,6 +108,27 @@
 }
 
 @layer utilities {
+  /**
+   * ความกว้างของเนื้อหาในหน้า — คุมไว้ที่เดียวเพื่อให้ header, แถบหมวดหมู่
+   * และรายการเมนูอยู่ในกรอบเดียวกันเป๊ะ ๆ ทุก breakpoint
+   *
+   * มือถือใช้คอลัมน์เดียวกว้าง 42rem ส่วนแท็บเล็ตขึ้นไปขยายเป็น 56rem
+   * เพื่อให้การ์ดเมนูวางสองคอลัมน์ได้โดยไม่ยืดจนเสียสัดส่วน
+   */
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 42rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (width >= 48rem) {
+    .container-page {
+      max-width: 56rem;
+      padding-inline: 2rem;
+    }
+  }
+
   /* LIFF เปิดเต็มจอ ต้องเผื่อ safe area ของ iPhone */
   .pb-safe {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
