@@ -23,18 +23,18 @@ export function StoreHeader({ store, now, serviceType, tableNo, onChangeServiceT
 
   return (
     <header className="bg-brand-pattern pt-safe">
-      <div className="mx-auto max-w-2xl px-5 pt-6 pb-6">
+      <div className="container-page pt-6 pb-6 md:pt-9 md:pb-8">
         <div className="flex items-center gap-3">
           {store.logoUrl ? (
-            <img src={store.logoUrl} alt="" width={44} height={44} className="size-11" />
+            <img src={store.logoUrl} alt="" width={56} height={56} className="size-11 md:size-14" />
           ) : (
-            <BrandMark size={44} />
+            <BrandMark size={56} className="size-11 md:size-14" />
           )}
           <div className="min-w-0">
-            <h1 className="truncate font-display text-xl leading-tight font-extrabold text-ink-inverse">
+            <h1 className="truncate font-display text-xl leading-tight font-extrabold text-ink-inverse md:text-3xl">
               {store.name}
             </h1>
-            <p className="text-xs text-ink-inverse-2">{todayHoursLabel(store, now)}</p>
+            <p className="text-xs text-ink-inverse-2 md:text-sm">{todayHoursLabel(store, now)}</p>
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export function StoreHeader({ store, now, serviceType, tableNo, onChangeServiceT
         </div>
 
         {store.announcement && (
-          <p className="mt-4 rounded-[var(--radius-sm)] bg-white/10 px-3 py-2 text-sm text-ink-inverse">
+          <p className="mt-4 max-w-prose rounded-[var(--radius-sm)] bg-white/10 px-3 py-2 text-sm text-ink-inverse md:text-base">
             {store.announcement}
           </p>
         )}

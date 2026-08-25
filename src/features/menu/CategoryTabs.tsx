@@ -24,7 +24,7 @@ export function CategoryTabs({ categories, activeId, onSelect }: Props) {
         ref={listRef}
         role="tablist"
         aria-label="หมวดหมู่เมนู"
-        className="mx-auto flex max-w-2xl gap-2 overflow-x-auto px-5 py-2.5"
+        className="container-page flex gap-2 overflow-x-auto py-2.5"
       >
         {categories.map((category) => {
           const active = category.id === activeId
